@@ -22,7 +22,7 @@ def send_mail(subject, message, from_email, recipient_list, priority="medium",
     from django.utils.encoding import force_unicode
     from mailer.models import Message
     # need to do this in case subject used lazy version of ugettext
-    subject = force_unicode(subject)
+    subject = force_unicode(subject)[:100]
     priority = PRIORITY_MAPPING[priority]
     for to_address in recipient_list:
         Message(to_address=to_address,
